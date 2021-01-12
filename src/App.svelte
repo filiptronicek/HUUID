@@ -37,7 +37,7 @@
 		</label>
 		<br>
 		<label for="siblings">Number of siblings:<input id="siblings" type="number" on:change={updateSib} value="{siblings}" min="0" /></label>
-			<label for="hair"> Your hair color: 
+			<label for="hair"> Your hair color (you were born with): 
 				<!-- svelte-ignore a11y-no-onchange -->
 				<select name="hair" id="hair" on:change={updateHair} value="{hair}">
 					<option value="brown">Brown</option>
