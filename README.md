@@ -1,2 +1,2 @@
 # HUUID
- a HUman Unique ID
+a HUman Unique IDentifier
