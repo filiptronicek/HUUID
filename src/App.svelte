@@ -49,6 +49,7 @@
 			<label for="hair"> Your hair color (you were born with): 
 				<!-- svelte-ignore a11y-no-onchange -->
 				<select name="hair" id="hair" on:change={updateHair} value="{hair}">
+					<option disabled selected value> -- select an option -- </option>
 					<option value="brown">Brown</option>
 					<option value="blond">Blond</option>
 					<option value="black">Black</option>
@@ -59,7 +60,9 @@
 		</label>
 	</form>
 	<br>
-	<span>Your HUUID: {digest}</span> <br>
+	<span>Your HUUID: <br>
+		<div class="digest">{digest}</div>	
+	</span> <br>
 	<span>Calculated from: 
 		{JSON.stringify({
 			birthday: age,
@@ -85,9 +88,25 @@
 		font-weight: 100;
 	}
 
+	
+	.digest {
+		margin: auto;
+		background: gray;
+		width: 60rem;
+		height: 40px;
+		color: white;
+		font-size: 1.7rem;
+		padding: 20px 0;
+	}
+
 	@media (min-width: 640px) {
 		main {
 			max-width: none;
 		}
+		
+		.digest {
+			
+		}
 	}
+
 </style>
