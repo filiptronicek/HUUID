@@ -6,6 +6,7 @@
 	const year = new Date().getFullYear();
 	let age = year;
 	let hair = "";
+	let name = "";
 
 	function updateAge() {
 		age = this.value;
@@ -19,10 +20,15 @@
 		hair = this.value;
 	}
 
+	function updateName() {
+		name = this.value;
+	}
+
 	$:digest = sha256(JSON.stringify({
 		birthday: age,
 		nos: siblings,
 		hairColor: hair,
+		name: name,
 	}));
 
 </script>
@@ -32,6 +38,9 @@
 	<h2>Your HUman Unique IDentifier</h2>
 	<br>
 	<form action="">
+		<label for="name"> Your first name:
+			<input id="name" type="text" on:keyup={updateName}>
+		</label>
 		<label for="dob">Date of birth:<input type="date" id="dob" name="bday"
 			min="1900-01-01" max="{new Date().getTime()}" on:change={updateAge}>
 		</label>
@@ -56,6 +65,7 @@
 			birthday: age,
 			nos: siblings,
 			hairColor: hair,
+			name: name,
 		})}
 	</span>
 </main>
