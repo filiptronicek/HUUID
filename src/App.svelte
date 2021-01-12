@@ -103,10 +103,16 @@
 		main {
 			max-width: none;
 		}
-		
-		.digest {
-			
-		}
 	}
 
+	@media (max-width: 640px) {
+		.digest {
+				font-size: 1.3rem !important;
+				width: 100% !important;
+				height: 30px;
+				padding: 15px 0;
+				overflow-x: auto;
+				white-space: nowrap;
+		}
+	}
 </style>
