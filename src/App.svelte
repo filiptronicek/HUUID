@@ -7,6 +7,11 @@
 	let age = year;
 	let hair = "";
 	let name = "";
+	let sex = "";
+
+	function updateSex() {
+		sex = this.value;
+	}
 
 	function updateAge() {
 		age = this.value;
@@ -26,9 +31,10 @@
 
 	$:digest = sha256(JSON.stringify({
 		birthday: age,
-		nos: siblings,
+		siblings: siblings,
 		hairColor: hair,
 		name: name,
+		sex: sex,
 	}));
 
 </script>
@@ -58,6 +64,15 @@
 					<option value="grayorwhite">Gray and/or white</option>
 			</select>
 		</label>
+		<br>
+		<label for="sex">You sex: 
+			<!-- svelte-ignore a11y-no-onchange -->
+			<select name="sex" id="sex" on:change={updateSex}>
+				<option disabled selected value> -- select an option -- </option>
+				<option value="male">Male</option>
+				<option value="female">Female</option>
+			</select>
+		</label>
 	</form>
 	<br>
 	<span>Your HUUID: <br>
@@ -66,9 +81,10 @@
 	<span>Calculated from: 
 		{JSON.stringify({
 			birthday: age,
-			nos: siblings,
+			siblings: siblings,
 			hairColor: hair,
 			name: name,
+			sex: sex,
 		})}
 	</span>
 </main>
