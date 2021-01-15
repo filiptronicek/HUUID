@@ -1,6 +1,7 @@
 <script>
 
 	import sha256 from 'js-sha256';
+	import Axios from "axios"
 
 	let siblings = 0;
 	const year = new Date().getFullYear();
@@ -29,13 +30,28 @@
 		name = this.value;
 	}
 
-	$:digest = sha256(JSON.stringify({
+	$:digest = updatePhoto() && sha256(JSON.stringify({
 		birthday: age,
 		siblings: siblings,
 		hairColor: hair,
 		name: name,
 		sex: sex,
 	}));
+
+	const getAvatar = async(d) => {
+		if (age !== 0 && name !== "") {
+			const resp = await Axios.get(`/api/upload?digest=${d}`);
+			return await resp.data.result;
+		}
+	}
+
+	async function updatePhoto() {
+		document.getElementById('buddy').setAttribute("src", await getAvatar(digest));
+	}
+
+	window.onload = async() => {
+		updatePhoto();
+	}
 
 </script>
 
@@ -76,7 +92,7 @@
 	</form>
 	<br>
 	<span>Your HUUID: <br>
-		<div class="digest">{digest}</div>	
+		<div on:change={updatePhoto} class="digest">{digest}</div>	
 	</span> <br>
 	<span>Calculated from: 
 		{JSON.stringify({
@@ -86,7 +102,9 @@
 			name: name,
 			sex: sex,
 		})}
-	</span>
+	</span> 
+	<br>
+	<img id="buddy" alt="Your soul mate">
 </main>
 
 <style>
@@ -104,6 +122,10 @@
 		font-weight: 100;
 	}
 
+	#buddy {
+		max-width: 80vw;
+		margin: auto;
+	}
 	
 	.digest {
 		margin: auto;
