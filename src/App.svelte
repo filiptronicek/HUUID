@@ -46,7 +46,7 @@
 	}
 
 	async function updatePhoto() {
-		document.getElementById('buddy').setAttribute("src", await getAvatar(digest));
+		document.getElementById('buddy') && document.getElementById('buddy').setAttribute("src", await getAvatar(digest));
 	}
 
 	window.onload = async() => {
@@ -104,7 +104,9 @@
 		})}
 	</span> 
 	<br>
-	<img id="buddy" alt="Your soul mate">
+	{#if digest !== "05c5cfe37cd779468362ee48b85dfbf911986d2475a7aa174343646bd7d41c45"}
+		<img id="buddy" alt="Your soul mate">
+	{/if}
 </main>
 
 <style>
