@@ -103,8 +103,11 @@
 			sex: sex,
 		})}
 	</span> 
-	<br>
 	{#if digest !== "05c5cfe37cd779468362ee48b85dfbf911986d2475a7aa174343646bd7d41c45"}
+		<br>
+		<h2>
+			Your soul mate:
+		</h2>
 		<img id="buddy" alt="Your soul mate">
 	{/if}
 </main>
