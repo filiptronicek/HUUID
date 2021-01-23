@@ -46,7 +46,9 @@
 	}
 
 	async function updatePhoto() {
-		document.getElementById('buddy') && document.getElementById('buddy').setAttribute("src", await getAvatar(digest));
+		const ogHash = digest;
+		const soulMate = await getAvatar(digest);
+		document.getElementById('buddy') && ogHash === digest && document.getElementById('buddy').setAttribute("src", soulMate);
 	}
 
 	window.onload = async() => {
