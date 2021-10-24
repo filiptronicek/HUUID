@@ -1,8 +1,4 @@
 <script lang="ts">
-
-	import sha256 from 'js-sha256';
-	import Axios from "axios"
-
 	let siblings = 0;
 	const year = new Date().getFullYear();
 	let age = year;
@@ -10,19 +6,19 @@
 	let name = "";
 	let sex = "";
 
-	function updateSex() {
+	function updateSex(): void {
 		sex = this.value;
 	}
 
-	function updateAge() {
+	function updateAge(): void {
 		age = this.value;
 	}
 
-	function updateSib() {
+	function updateSib(): void {
 		siblings = this.value;
 	}
 
-	function updateHair() {
+	function updateHair(): void {
 		hair = this.value;
 	}
 
@@ -81,10 +77,10 @@
 	<span>Calculated from: 
 		{JSON.stringify({
 			birthday: age,
-			siblings: siblings,
+			siblings,
 			hairColor: hair,
-			name: name,
-			sex: sex,
+			name,
+			sex,
 		})}
 	</span> 
 </main>
