@@ -99,11 +99,6 @@
 		font-size: 4em;
 		font-weight: 100;
 	}
-
-	#buddy {
-		max-width: 80vw;
-		margin: auto;
-	}
 	
 	.digest {
 		margin: auto;
