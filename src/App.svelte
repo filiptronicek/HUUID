@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 
 	import sha256 from 'js-sha256';
 	import Axios from "axios"
