@@ -30,13 +30,13 @@
 		name = this.value;
 	}
 
-	$:digest = updatePhoto() && sha256(JSON.stringify({
+	$:digest = JSON.stringify({
 		birthday: age,
 		siblings: siblings,
 		hairColor: hair,
 		name: name,
 		sex: sex,
-	}));
+	});
 
 	const getAvatar = async(d) => {
 		if (age !== 0 && name !== "") {
@@ -44,17 +44,6 @@
 			return await resp.data.result;
 		}
 	}
-
-	async function updatePhoto() {
-		const ogHash = digest;
-		const soulMate = await getAvatar(digest);
-		document.getElementById('buddy') && ogHash === digest && document.getElementById('buddy').setAttribute("src", soulMate);
-	}
-
-	window.onload = async() => {
-		updatePhoto();
-	}
-
 </script>
 
 <main>
@@ -94,7 +83,7 @@
 	</form>
 	<br>
 	<span>Your HUUID: <br>
-		<div on:change={updatePhoto} class="digest">{digest}</div>	
+		<div class="digest">{digest}</div>	
 	</span> <br>
 	<span>Calculated from: 
 		{JSON.stringify({
@@ -105,13 +94,6 @@
 			sex: sex,
 		})}
 	</span> 
-	{#if digest !== "05c5cfe37cd779468362ee48b85dfbf911986d2475a7aa174343646bd7d41c45"}
-		<br>
-		<h2>
-			Your soul mate:
-		</h2>
-		<img id="buddy" alt="Your soul mate">
-	{/if}
 </main>
 
 <style>
