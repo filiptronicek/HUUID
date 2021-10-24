@@ -37,13 +37,6 @@
 		name: name,
 		sex: sex,
 	});
-
-	const getAvatar = async(d) => {
-		if (age !== 0 && name !== "") {
-			const resp = await Axios.get(`/api/upload?digest=${d}`);
-			return await resp.data.result;
-		}
-	}
 </script>
 
 <main>
